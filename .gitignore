@@ -1,0 +1,14 @@
+*.idea/
+.venv
+*.log
+*.pyc
+__pycache__/
+*.py[cod]
+env/
+venv/
+.env
+.pytype/
+*.sage.py
+__pypackages__/
+.pytest_cache/
+.coverage
