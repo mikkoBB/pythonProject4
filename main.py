@@ -12,7 +12,7 @@ class Category:
         self.all_category_quantity = 1
 
 Category.all_unique_prod_quantity += 1
-print(Category.all_unique_prod_quantity)
+
 
 
 class Product:

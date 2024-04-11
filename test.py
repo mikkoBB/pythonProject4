@@ -12,6 +12,7 @@ def test_category_init(category):
 def test_category_count(category):
     assert category.all_unique_prod_quantity == 1
     assert category.all_category_quantity == 1
+
 @pytest.fixture
 def product():
     return Product("a", "x", 10.0,2)
