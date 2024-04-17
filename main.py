@@ -4,20 +4,20 @@ class Category:
     '''
     title: str
     description: str
-    list_product: list
+    products: list
     all_category_quantity = 0
     all_unique_prod_quantity = 0
 
-    def __init__(self, title, description, list_product):
+    def __init__(self, title, description, products):
         '''
         Метод инициализации атрибутов класса
         '''
         self.title = title
         self.description = description
-        self.list_product = list_product
+        self.products = products
         Category.all_category_quantity += 1
-        Category.all_unique_prod_quantity += len(set(list_product))
-        list_product = [Product("a", "x", 10.0, 2), Product("a1", "x1", 10.2, 2)]
+        Category.all_unique_prod_quantity += len(set(self.products))
+
 
 
 

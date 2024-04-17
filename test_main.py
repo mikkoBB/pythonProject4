@@ -2,14 +2,14 @@ import pytest
 from main import Category
 from main import Product
 import os
-
+from datetime import datetime
 
 @pytest.fixture
 def category():
     '''
     Тестирование класса Категория
     '''
-    return Category('name_1', 'text_1', 'list_product')
+    return Category('name_1', 'text_1', [('a', 'x', 10.0, 2)])
 
 def test_category_init(category):
     '''
@@ -17,12 +17,12 @@ def test_category_init(category):
     '''
     assert category.title == 'name_1'
     assert category.description == 'text_1'
-    assert category.list_product == [Product('a', 'x', 10.0, 2), Product('a1', 'x1', 10.2, 2)]
+    assert category.products == [('a', 'x', 10.0, 2)]
 def test_category_count(category):
     '''
     Тестирование подсчетов уникальных товаров и количества категорий товаров
     '''
-    assert Category.all_unique_prod_quantity == 22
+    assert Category.all_unique_prod_quantity == 2
     assert Category.all_category_quantity == 2
 
 @pytest.fixture
