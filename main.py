@@ -31,7 +31,7 @@ class Category:
     all_category_quantity = 0
     all_unique_prod_quantity = 0
     all_category_quantity += 1
-    all_unique_prod_quanti += len(set(list_products))
+    all_unique_prod_quantity += len(set(list_products))
 
     def __init__(self, title, description, list_products):
         '''
