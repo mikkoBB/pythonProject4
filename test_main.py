@@ -58,10 +58,39 @@ def test_product(product):
     assert product.price == 10.4
     assert product.quantity == 6
 
+@pytest.fixture
+def product():
+    '''
+    Тестирование класса Продукт
+    '''
+    return Product('a2', 'x2', 14.0, 5)
+
+
+def test_product_init(product):
+    '''
+    Тестирование инициализации названий товаров, их описаний, цен и количества
+    '''
+    assert product.name == 'a2'
+    assert product.description == 'x2'
+    assert product.price == 14.0
+    assert product.quantity == 5
+
+
+def test_product(product):
+    '''
+    Тестирование класса Продукт
+    '''
+    assert product.name == 'a2'
+    assert product.description == 'x2'
+    assert product.price == 14.0
+    assert product.quantity == 5
+
+
 
 p1 = Product('a', 'x', 10.0, 2)
 p2 = Product('a1', 'x1', 10.4, 6)
-list_products = [p1, p2]
+p3 = Product('a2', 'x2', 14.0, 5 )
+__list_products = [p1, p2, p3]
 
 
 @pytest.fixture
@@ -69,7 +98,7 @@ def category():
     '''
     Тестирование класса Категория
     '''
-    return Category('name_1', 'text_1', list_products)
+    return Category('name_1', 'text_1', __list_products)
 
 
 def test_category_init(category):
@@ -78,7 +107,7 @@ def test_category_init(category):
     '''
     assert category.title == 'name_1'
     assert category.description == 'text_1'
-    assert category.list_products == list_products
+    assert category.list_products == __list_products
 
 
 def test_category_count(category):
@@ -86,6 +115,6 @@ def test_category_count(category):
     Тестирование подсчетов уникальных товаров и количества категорий товаров
     '''
     assert Category.all_category_quantity == 1
-    assert Category.all_unique_prod_quantity == 2
+    assert Category.all_unique_prod_quantity == 3
 
 
