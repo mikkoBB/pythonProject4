@@ -35,14 +35,16 @@ class Product:
 
     @price.setter
     def price(self, new_price):
+        self.__price = new_price
         if new_price <= 0:
             print('Цена введена некорректно')
         else:
-            print(new_price)
+            return new_price
 
 p1 = Product('a', 'x', 10.0, 2)
 p2 = Product('a1', 'x1', 10.4, 6)
-list_products = [p1, p2]
+p3 = Product('a2', 'x2', 14.0, 5 )
+list_products = [p1, p2, p3]
 
 
 class Category:
