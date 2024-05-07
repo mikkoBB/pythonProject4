@@ -89,7 +89,7 @@ def test_product(product):
 
 p1 = Product('a', 'x', 10.0, 2)
 p2 = Product('a1', 'x1', 10.4, 6)
-p3 = Product('a2', 'x2', 14.0, 5 )
+p3 = Product('a2', 'x2', 14.0, 5)
 __list_products = [p1, p2, p3]
 
 
@@ -115,6 +115,6 @@ def test_category_count(category):
     Тестирование подсчетов уникальных товаров и количества категорий товаров
     '''
     assert Category.all_category_quantity == 1
-    assert Category.all_unique_prod_quantity == 3
+    assert Category.all_unique_prod_quantity == 2
 
 

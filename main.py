@@ -39,12 +39,12 @@ class Product:
         if new_price <= 0:
             print('Цена введена некорректно')
         else:
-            return new_price
+            new_price > 0
 
 p1 = Product('a', 'x', 10.0, 2)
 p2 = Product('a1', 'x1', 10.4, 6)
-p3 = Product('a2', 'x2', 14.0, 5 )
-list_products = [p1, p2, p3]
+
+list_products = [p1, p2]
 
 
 class Category:
