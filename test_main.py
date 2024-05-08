@@ -115,6 +115,6 @@ def test_category_count(category):
     Тестирование подсчетов уникальных товаров и количества категорий товаров
     '''
     assert Category.all_category_quantity == 1
-    assert Category.all_unique_prod_quantity == 2
+    assert Category.all_unique_prod_quantity == 3
 
 
