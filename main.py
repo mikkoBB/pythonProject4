@@ -7,8 +7,7 @@ class Product:
     price: float
     quantity: int
 
-
-    def __init__(self, name, description, price,quantity):
+    def __init__(self, name, description, price, quantity):
         '''
         Метод инициализации атрибутов класса Продукт
         '''
@@ -18,7 +17,7 @@ class Product:
         self.quantity = quantity
 
     def __str__(self):
-        return f'{self.title}, {self.price} руб. Остаток: {self.quantity}.'
+        return f'{self.name}, {self.price} руб. Остаток: {self.quantity}.'
 
     def __add__(self, other):
         if self.__class__ == type(other):
@@ -29,6 +28,12 @@ class Product:
     def creating_product(cls, product_data: dict):
         return cls(**product_data)
 
+    def adding_product(self, list_of_product):
+        for prod in list_of_product:
+            if prod.name == self.name:
+                prod.quantity += self.quantity
+                if self.__price > prod.__price:
+                    prod.__price == self.__price
     @property
     def price(self):
         return self.__price
@@ -39,10 +44,26 @@ class Product:
             print('Цена введена некорректно')
         else:
             self.__price = new_price
+class Smartphone(Product):
+    def __init__(self, name: str, description: str, price: float, quantity: int,performance: float, model: str,
+                 memory: int, color: str):
+        super().__init__(name, description, price, quantity)
+        self.performance = performance
+        self.model = model
+        self.memory = memory
+        self.color = color
+class LawnGrass(Product):
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 manufacturer_country: str, germination_period: str, color: str):
+        super().__init__(self, title, description, price, quantity)
+        self.manufacturer_country = manufacturer_country
+        self.germination_period = germination_period
+        self.color = color
+
 
 p1 = Product('a', 'x', 10.0, 2)
 p2 = Product('a1', 'x1', 10.4, 6)
-p3 = Product('a2', 'x2', 14.0, 5 )
+p3 = Product('a2', 'x2', 14.0, 5)
 list_products = [p1, p2, p3]
 
 
