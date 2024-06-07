@@ -44,6 +44,7 @@ class Product:
             print('Цена введена некорректно')
         else:
             self.__price = new_price
+
 class Smartphone(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,performance: float, model: str,
                  memory: int, color: str):
@@ -52,6 +53,7 @@ class Smartphone(Product):
         self.model = model
         self.memory = memory
         self.color = color
+
 class LawnGrass(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  manufacturer_country: str, germination_period: str, color: str):
