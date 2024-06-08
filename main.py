@@ -1,3 +1,6 @@
+from abc import ABC, abstractmethod
+
+
 class Product:
     '''
     Класс, описывающий название товара, его описание, также цену и количество
@@ -34,6 +37,7 @@ class Product:
                 prod.quantity += self.quantity
                 if self.__price > prod.__price:
                     prod.__price == self.__price
+
     @property
     def price(self):
         return self.__price
@@ -45,6 +49,7 @@ class Product:
         else:
             self.__price = new_price
 
+
 class Smartphone(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,performance: float, model: str,
                  memory: int, color: str):
@@ -54,6 +59,7 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
+
 class LawnGrass(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  manufacturer_country: str, germination_period: str, color: str):
@@ -62,6 +68,31 @@ class LawnGrass(Product):
         self.germination_period = germination_period
         self.color = color
 
+
+class AbstractProduct(ABC):
+    @classmethod
+    @abstractmethod
+    def creating_product(cls, *args, **kwargs):
+        pass
+
+    @property
+    @abstractmethod
+    def price(self):
+        pass
+
+    @price.setter
+    def price(self, value):
+        pass
+
+
+class PrintMixin:
+    def __repr__(self):
+
+        value = []
+
+        for i in self.__dict__.values():
+            value.append(i)
+        return f'{self.__class__.__name__}{value}'
 
 p1 = Product('a', 'x', 10.0, 2)
 p2 = Product('a1', 'x1', 10.4, 6)
@@ -96,7 +127,7 @@ class Category:
             return count_product
 
     def __str__(self):
-        return f'{self.title}, количество продуктов: {len(self)} шт.'
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
 
     def adding_product(self, new_product):
         if new_product.quantity == 0:
@@ -118,12 +149,3 @@ class Category:
     def list_products(self):
         return self.__list_products
 
-    def average(self):
-        getting_sum = 0
-        try:
-            for product in self.__list_products:
-                getting_sum += product.price
-            result = getting_sum / len(self.__list_products)
-            return result
-        except ZeroDivisionError:
-            return 0
