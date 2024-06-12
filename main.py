@@ -1,7 +1,31 @@
 from abc import ABC, abstractmethod
 
 
-class Product:
+class AbstractProduct(ABC):
+    @classmethod
+    @abstractmethod
+    def creating_product(cls, *args, **kwargs):
+        pass
+
+    @property
+    @abstractmethod
+    def price(self):
+        pass
+
+    @price.setter
+    def price(self, value):
+        pass
+
+
+class PrintMixin:
+    def __repr__(self):
+        value = []
+        for i in self.__dict__.values():
+            value.append(i)
+            return f'{self.__class__.__name__}{value}'
+
+
+class Product(AbstractProduct, PrintMixin):
     '''
     Класс, описывающий название товара, его описание, также цену и количество
     '''
@@ -14,6 +38,7 @@ class Product:
         '''
         Метод инициализации атрибутов класса Продукт
         '''
+        super().__init__()
         self.name = name
         self.description = description
         self.__price = float(price)
@@ -36,7 +61,7 @@ class Product:
             if prod.name == self.name:
                 prod.quantity += self.quantity
                 if self.__price > prod.__price:
-                    prod.__price == self.__price
+                    prod.__price = self.__price
 
     @property
     def price(self):
@@ -63,36 +88,11 @@ class Smartphone(Product):
 class LawnGrass(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  manufacturer_country: str, germination_period: str, color: str):
-        super().__init__(self, title, description, price, quantity)
+        super().__init__(self, name, description, price, quantity)
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
         self.color = color
 
-
-class AbstractProduct(ABC):
-    @classmethod
-    @abstractmethod
-    def creating_product(cls, *args, **kwargs):
-        pass
-
-    @property
-    @abstractmethod
-    def price(self):
-        pass
-
-    @price.setter
-    def price(self, value):
-        pass
-
-
-class PrintMixin:
-    def __repr__(self):
-
-        value = []
-
-        for i in self.__dict__.values():
-            value.append(i)
-        return f'{self.__class__.__name__}{value}'
 
 p1 = Product('a', 'x', 10.0, 2)
 p2 = Product('a1', 'x1', 10.4, 6)
@@ -127,7 +127,7 @@ class Category:
             return count_product
 
     def __str__(self):
-        return f'{self.name}, количество продуктов: {len(self)} шт.'
+        return f'{self.title}, количество продуктов: {len(self)} шт.'
 
     def adding_product(self, new_product):
         if new_product.quantity == 0:
@@ -148,4 +148,3 @@ class Category:
     @property
     def list_products(self):
         return self.__list_products
-

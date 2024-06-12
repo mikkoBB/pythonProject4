@@ -58,6 +58,7 @@ def test_product(product):
     assert product.price == 10.4
     assert product.quantity == 6
 
+
 @pytest.fixture
 def product():
     '''
@@ -84,7 +85,6 @@ def test_product(product):
     assert product.description == 'x2'
     assert product.price == 14.0
     assert product.quantity == 5
-
 
 
 p1 = Product('a', 'x', 10.0, 2)
