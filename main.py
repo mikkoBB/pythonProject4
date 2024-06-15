@@ -7,13 +7,8 @@ class AbstractProduct(ABC):
     def creating_product(cls, *args, **kwargs):
         pass
 
-    @property
     @abstractmethod
     def price(self):
-        pass
-
-    @price.setter
-    def price(self, value):
         pass
 
 
@@ -148,3 +143,13 @@ class Category:
     @property
     def list_products(self):
         return self.__list_products
+
+    def average(self):
+        getting_sum = 0
+        try:
+            for product in self.__list_products:
+                getting_sum += product.price
+            result = getting_sum / len(self.__list_products)
+            return result
+        except ZeroDivisionError:
+            return 0
